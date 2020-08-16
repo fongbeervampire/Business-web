@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
@@ -14,3 +15,49 @@ export default class Header extends Component {
         )
     }
 }
+*/
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { 
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from 'reactstrap';
+
+const Header = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
+  return (
+    <div>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand tag={Link} href="/">Gavaintra.P</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink tag={Link} href="/components/">เกี่ยวกับเรา</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} href="/contact">ติดต่อเรา</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} href="/products">สินค้า</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} href="/profile">ข้อมูลส่วนตัว</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
+  );
+}
+
+export default Header;
